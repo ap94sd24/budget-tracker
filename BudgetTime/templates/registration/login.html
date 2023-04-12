@@ -9,14 +9,12 @@
     <!-- https://github.com/jazzband/django-widget-tweaks -->
 
     <div class="form-floating mb-3">
-      {% render_field form.username id="floatingUsername" placeholder="Username"
-      %}
+      {% render_field form.username class+="form-control" %}
       <label for="floatingUsername">Username</label>
     </div>
 
     <div class="form-floating mb-3">
-      {% render_field form.password class="form-control" id="floatingPassword"
-      placeholder="Password" %}
+      {% render_field form.password class+="form-control" %}
       <label for="floatingPassword">Password</label>
     </div>
 
@@ -31,11 +29,11 @@
     </div>
   </form>
 
-  <!-- <p class="text-light mt-4">
+  <p class="text-light mt-4">
     Or
-    <a href="{#% url 'django_registration_register' %#}" class="auth-link"
+    <a href="{% url 'django_registration_register' %}" class="auth-link"
       >Create an Account</a
     >
-  </p> -->
+  </p>
 </div>
 {% endblock %}
