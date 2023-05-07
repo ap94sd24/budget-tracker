@@ -28,7 +28,7 @@ class AnswerCreateAPIView(generics.CreateAPIView):
         request_user = self.request.user
         kwarg_slug = self.kwargs.get("slug")
         question = get_object_or_404(Question, slug=kwarg_slug)
-        if question.answers.filter(author=request_user).exist():
+        if question.answers.filter(author=request_user).exists():
             raise ValidationError("Question already answered!")
         serializer.save(author=request_user, question=question)
 
@@ -46,4 +46,4 @@ class AnswerListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         kwarg_slug = self.kwargs.get("slug")
-        return Answer.objects.filter(question__slug=kwarg_slug).order_by("-created-by")
+        return Answer.objects.filter(question__slug=kwarg_slug).order_by("-created_at")
